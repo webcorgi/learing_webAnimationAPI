@@ -27,6 +27,17 @@
 
     <!-- animation: aliceTumbling infinite 3s linear; -->
     <style>
+        #play,
+        #stop {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+        }
+
+        #stop {
+            left: 50px;
+        }
+
         #alice {
             animation: aliceTumbling infinite 3s linear;
             color: #431236;
@@ -110,6 +121,26 @@
             iterations: Infinity,
         };
         const alice = document.getElementById("alice").animate(aliceTumbling, aliceTiming);
+
+
+        /*
+            CHAPTER 02에서 배운 play,pause를 여기서 실험..
+
+            1.
+        */
+        const startfn = function () {
+            alice.pause()
+            alice.playbackRate = -1;
+            // alice.playbackRate = 1;
+            alice.play()
+        }
+        const stopfn = function () {
+            alice.playbackRate = 1;
+            alice.pause()
+        }
+
+        document.getElementById("play").addEventListener('click', startfn, false)
+        document.getElementById("stop").addEventListener('click', stopfn, false)
     </script>
 </body>
 
